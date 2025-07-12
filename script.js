@@ -35,6 +35,7 @@ function updateTimer() {
 function carregarFotosCarrossel() {
   const container = document.getElementById("carousel-inner");
   let i = 1;
+  const imagens = [];
 
   function carregarProxima() {
     const img = new Image();
@@ -42,17 +43,37 @@ function carregarFotosCarrossel() {
 
     img.onload = () => {
       img.alt = `Foto ${i}`;
-      container.appendChild(img);
+      img.className = "carousel-img";
+      imagens.push(img);
       i++;
       carregarProxima();
     };
 
     img.onerror = () => {
-      console.log(`✅ Carregamento finalizado: ${i - 1} imagem(ns) carregada(s).`);
+      imagens.forEach(img => container.appendChild(img.cloneNode()));
+      imagens.forEach(img => container.appendChild(img.cloneNode())); // 🔁 duplicado p/ looping
+      iniciarScrollAutomatico(container);
+      console.log(`✅ ${imagens.length} imagens carregadas e duplicadas para animação.`);
     };
   }
 
   carregarProxima();
+}
+
+function iniciarScrollAutomatico(container) {
+  let scrollPos = 0;
+  const velocidade = 1.5; // ⏩ ajuste aqui para controlar a velocidade
+
+  function rolar() {
+    scrollPos += velocidade;
+    if (scrollPos >= container.scrollWidth / 2) {
+      scrollPos = 0;
+    }
+    container.scrollLeft = scrollPos;
+    requestAnimationFrame(rolar);
+  }
+
+  requestAnimationFrame(rolar);
 }
 
 window.onload = () => {

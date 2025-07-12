@@ -36,33 +36,29 @@ button:hover {
   margin: 2rem 0;
 }
 
-/* 🖼️ Carrossel com rolagem contínua + manual */
+/* ✅ Novo carrossel com suporte a rolagem manual e automática */
 .carousel {
-  overflow-x: auto;
+  overflow-x: scroll;
   overflow-y: hidden;
   margin-bottom: 2rem;
   border-radius: 16px;
   width: 100%;
+  scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   cursor: grab;
 }
 
-.carousel-inner {
+.carousel-track {
   display: flex;
   gap: 10px;
   padding-bottom: 0.5rem;
   width: max-content;
-  animation: scrollLoop 30s linear infinite;
+  scroll-snap-align: start;
 }
 
-.carousel-inner:hover {
-  animation-play-state: paused;
-}
-
-.carousel-inner img {
+.carousel-img {
   height: auto;
-  width: auto;
   max-height: 300px;
   object-fit: contain;
   border-radius: 16px;
@@ -70,10 +66,17 @@ button:hover {
   flex-shrink: 0;
 }
 
-/* 💫 Animação contínua */
-@keyframes scrollLoop {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+/* Responsivo */
+@media screen and (max-width: 768px) {
+  .carousel-img {
+    max-height: 220px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .carousel-img {
+    max-height: 180px;
+  }
 }
 
 .contador {
@@ -86,18 +89,4 @@ button:hover {
   padding: 1rem;
   background: #ffe4ec;
   border-radius: 15px;
-}
-
-/* 📱 Responsividade */
-@media screen and (max-width: 768px) {
-  .carousel-inner img {
-    max-height: 220px;
-    border-radius: 12px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .carousel-inner img {
-    max-height: 180px;
-  }
 }
