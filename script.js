@@ -20,8 +20,6 @@ function updateTimer() {
   seconds = Math.floor(seconds % 60);
 
   const partes = [];
-
-  // Função auxiliar para singular/plural
   const formatar = (valor, singular, plural) =>
     valor === 1 ? `1 ${singular}` : `${valor} ${plural}`;
 
@@ -51,7 +49,6 @@ function carregarFotosCarrossel() {
     };
 
     img.onerror = () => {
-      // Quando falhar, assume que acabou as imagens
       console.log(`✅ Carregamento finalizado: ${i - 1} imagem(ns) carregada(s).`);
     };
   }

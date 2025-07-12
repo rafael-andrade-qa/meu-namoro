@@ -36,38 +36,33 @@ button:hover {
   margin: 2rem 0;
 }
 
-/* 🖼️ Carrossel */
+/* 🖼️ Carrossel com rolagem contínua */
 .carousel {
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow: hidden;
   margin-bottom: 2rem;
   border-radius: 16px;
   width: 100%;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
 }
 
 .carousel-inner {
   display: flex;
   gap: 10px;
-  padding-bottom: 0.5rem;
-  width: max-content;
-  scroll-snap-align: start;
-  animation: scroll 30s linear infinite;
+  animation: scrollLoop 30s linear infinite;
 }
 
 .carousel-inner img {
   height: auto;
   width: auto;
   max-height: 300px;
+  object-fit: contain;
   border-radius: 16px;
-  scroll-snap-align: center;
-  object-fit: contain; /* IMPORTANTE: mostra a imagem inteira sem cortar */
+  flex-shrink: 0;
 }
 
-@keyframes scroll {
+/* 💡 Animação contínua — repete o conteúdo naturalmente */
+@keyframes scrollLoop {
   0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  100% { transform: translateX(-100%); }
 }
 
 .contador {
@@ -84,11 +79,6 @@ button:hover {
 
 /* 📱 Responsividade */
 @media screen and (max-width: 768px) {
-  .carousel-inner img {
-    max-height: 220px;
-    border-radius: 12px;
-  }
-
   .carousel-inner img {
     max-height: 220px;
     border-radius: 12px;
