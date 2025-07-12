@@ -36,23 +36,22 @@ button:hover {
   margin: 2rem 0;
 }
 
-/* ✅ Novo carrossel com suporte a rolagem manual e automática */
+/* Carrossel com rolagem e swipe manual */
 .carousel {
-  overflow-x: scroll;
+  overflow-x: auto;
   overflow-y: hidden;
   margin-bottom: 2rem;
   border-radius: 16px;
   width: 100%;
-  scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   cursor: grab;
 }
 
-.carousel-track {
+.carousel-inner {
   display: flex;
   gap: 10px;
-  padding-bottom: 0.5rem;
   width: max-content;
   scroll-snap-align: start;
 }
@@ -66,7 +65,7 @@ button:hover {
   flex-shrink: 0;
 }
 
-/* Responsivo */
+/* Responsividade */
 @media screen and (max-width: 768px) {
   .carousel-img {
     max-height: 220px;
