@@ -36,18 +36,28 @@ button:hover {
   margin: 2rem 0;
 }
 
-/* 🖼️ Carrossel com rolagem contínua */
+/* 🖼️ Carrossel com rolagem contínua + manual */
 .carousel {
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   margin-bottom: 2rem;
   border-radius: 16px;
   width: 100%;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
 }
 
 .carousel-inner {
   display: flex;
   gap: 10px;
+  padding-bottom: 0.5rem;
+  width: max-content;
   animation: scrollLoop 30s linear infinite;
+}
+
+.carousel-inner:hover {
+  animation-play-state: paused;
 }
 
 .carousel-inner img {
@@ -56,13 +66,14 @@ button:hover {
   max-height: 300px;
   object-fit: contain;
   border-radius: 16px;
+  scroll-snap-align: center;
   flex-shrink: 0;
 }
 
-/* 💡 Animação contínua — repete o conteúdo naturalmente */
+/* 💫 Animação contínua */
 @keyframes scrollLoop {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 .contador {

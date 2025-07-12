@@ -20,8 +20,7 @@ function updateTimer() {
   seconds = Math.floor(seconds % 60);
 
   const partes = [];
-  const formatar = (valor, singular, plural) =>
-    valor === 1 ? `1 ${singular}` : `${valor} ${plural}`;
+  const formatar = (v, s, p) => v === 1 ? `1 ${s}` : `${v} ${p}`;
 
   if (years > 0) partes.push(formatar(years, "ano", "anos"));
   if (months > 0 || years > 0) partes.push(formatar(months, "mês", "meses"));
