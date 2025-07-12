@@ -53,7 +53,7 @@ button:hover {
   padding-bottom: 0.5rem;
   width: max-content;
   scroll-snap-align: start;
-  animation: none; /* remove scroll automático para evitar cortes */
+  animation: scroll 30s linear infinite;
 }
 
 .carousel-inner img {
@@ -67,7 +67,7 @@ button:hover {
 
 @keyframes scroll {
   0%   { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
+  100% { transform: translateX(-50%); }
 }
 
 .contador {
