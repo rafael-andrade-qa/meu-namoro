@@ -4,8 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nosso Amor</title>
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+  <!-- Seu estilo -->
   <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
 </head>
 <body class="love">
   <div class="container">
@@ -15,8 +19,11 @@
       <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1DLKuppSYytOuxhtI6KBGu?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
 
-    <div class="carousel" id="carousel">
-      <div class="carousel-inner" id="carousel-inner"></div>
+    <!-- Carrossel com Swiper -->
+    <div class="swiper-container">
+      <div class="swiper-wrapper" id="swiper-wrapper">
+        <!-- Imagens serão adicionadas dinamicamente -->
+      </div>
     </div>
 
     <div class="contador">
@@ -31,5 +38,11 @@
       </p>
     </div>
   </div>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Seu script -->
+  <script defer src="script.js"></script>
 </body>
 </html>

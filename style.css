@@ -36,33 +36,26 @@ button:hover {
   margin: 2rem 0;
 }
 
-/* Carrossel com rolagem e swipe manual */
-.carousel {
-  overflow-x: auto;
-  overflow-y: hidden;
-  margin-bottom: 2rem;
-  border-radius: 16px;
+.swiper-container {
   width: 100%;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  cursor: grab;
+  margin-bottom: 2rem;
 }
 
-.carousel-inner {
+.swiper-slide {
+  width: auto;
+  height: auto;
   display: flex;
-  gap: 10px;
-  width: max-content;
-  scroll-snap-align: start;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 16px;
 }
 
 .carousel-img {
-  height: auto;
-  max-height: 300px;
-  object-fit: contain;
+  height: 100%;
+  width: auto;
+  object-fit: cover; /* importante para manter a proporção sem distorcer */
   border-radius: 16px;
-  scroll-snap-align: center;
-  flex-shrink: 0;
 }
 
 /* Responsividade */

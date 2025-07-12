@@ -32,50 +32,54 @@ function updateTimer() {
   document.getElementById("timer").textContent = partes.join(", ");
 }
 
-function carregarFotosCarrossel() {
-  const container = document.getElementById("carousel-inner");
+async function carregarFotosSwiper() {
+  const wrapper = document.getElementById("swiper-wrapper");
   let i = 1;
 
-  function carregarProxima() {
+  while (true) {
     const img = new Image();
     img.src = `fotos_convertidas/${i}.webp`;
 
-    img.onload = () => {
-      img.alt = `Foto ${i}`;
-      img.className = "carousel-img";
-      container.appendChild(img);
-      i++;
-      carregarProxima();
-    };
+    const carregada = await new Promise(resolve => {
+      img.onload = () => resolve(true);
+      img.onerror = () => resolve(false);
+    });
 
-    img.onerror = () => {
-      iniciarScrollAutomatico();
-      console.log(`✅ Carregadas ${i - 1} imagens.`);
-    };
+    if (!carregada) break;
+
+    img.alt = `Foto ${i}`;
+    img.className = "carousel-img";
+
+    const slide = document.createElement("div");
+    slide.className = "swiper-slide";
+    slide.appendChild(img);
+
+    wrapper.appendChild(slide);
+    i++;
   }
 
-  carregarProxima();
-}
+  console.log(`✅ Carregadas ${i - 1} imagens.`);
 
-function iniciarScrollAutomatico() {
-  const carousel = document.getElementById("carousel");
-  let scrollPos = 0;
-  const velocidade = 0.5; // ajuste aqui a velocidade
-
-  function rolar() {
-    scrollPos += velocidade;
-    if (scrollPos >= carousel.scrollWidth - carousel.clientWidth) {
-      scrollPos = 0;
+  new Swiper(".swiper-container", {
+    slidesPerView: 3,
+    spaceBetween: 5,
+    loop: true,
+    autoplay: {
+      delay: 1000,
+      disableOnInteraction: false,
+    },
+    speed: 1000,
+    grabCursor: true,
+    breakpoints: {
+      0:     { slidesPerView: 3 },
+      480:   { slidesPerView: 3 },
+      768:   { slidesPerView: 3 }
     }
-    carousel.scrollLeft = scrollPos;
-    requestAnimationFrame(rolar);
-  }
-
-  requestAnimationFrame(rolar);
+  });
 }
 
 window.onload = () => {
   updateTimer();
   setInterval(updateTimer, 1000);
-  carregarFotosCarrossel();
+  carregarFotosSwiper();
 };
