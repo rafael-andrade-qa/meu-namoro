@@ -65,10 +65,10 @@ async function carregarFotosSwiper() {
     spaceBetween: 5,
     loop: true,
     autoplay: {
-      delay: 1000,
+      delay: 10,
       disableOnInteraction: false,
     },
-    speed: 1000,
+    speed: 1100,
     grabCursor: true,
     breakpoints: {
       0:     { slidesPerView: 3 },

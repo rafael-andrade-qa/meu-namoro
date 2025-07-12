@@ -53,6 +53,7 @@ button:hover {
 
 .carousel-img {
   height: 100%;
+  max-height: 220px; /* controla a altura máxima */
   width: auto;
   object-fit: cover; /* importante para manter a proporção sem distorcer */
   border-radius: 16px;
