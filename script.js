@@ -1,23 +1,35 @@
 function updateTimer() {
   const startDate = new Date("2025-06-13T00:00:00");
   const now = new Date();
-  const diff = now - startDate;
 
-  let seconds = Math.floor(diff / 1000);
-  const years = Math.floor(seconds / (365.25 * 24 * 60 * 60));
-  seconds -= years * 365.25 * 24 * 60 * 60;
+  let years = now.getFullYear() - startDate.getFullYear();
+  let months = now.getMonth() - startDate.getMonth();
+  let days = now.getDate() - startDate.getDate();
+  let hours = now.getHours() - startDate.getHours();
+  let minutes = now.getMinutes() - startDate.getMinutes();
+  let seconds = now.getSeconds() - startDate.getSeconds();
 
-  const months = Math.floor(seconds / (30.44 * 24 * 60 * 60));
-  seconds -= months * 30.44 * 24 * 60 * 60;
-
-  const days = Math.floor(seconds / (24 * 60 * 60));
-  seconds -= days * 24 * 60 * 60;
-
-  const hours = Math.floor(seconds / 3600);
-  seconds -= hours * 3600;
-
-  const minutes = Math.floor(seconds / 60);
-  seconds = Math.floor(seconds % 60);
+  if (seconds < 0) {
+    seconds += 60;
+    minutes--;
+  }
+  if (minutes < 0) {
+    minutes += 60;
+    hours--;
+  }
+  if (hours < 0) {
+    hours += 24;
+    days--;
+  }
+  if (days < 0) {
+    const previousMonth = new Date(now.getFullYear(), now.getMonth(), 0); // último dia do mês anterior
+    days += previousMonth.getDate();
+    months--;
+  }
+  if (months < 0) {
+    months += 12;
+    years--;
+  }
 
   const partes = [];
   const formatar = (v, s, p) => v === 1 ? `1 ${s}` : `${v} ${p}`;
