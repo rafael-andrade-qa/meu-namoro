@@ -88,16 +88,19 @@ button:hover {
 }
 
 .msg-card {
+  overflow: visible; /* permite que o badge "saia" do box */
   position: relative;          /* badge vai usar esta caixa como referência */
   background: #ffe4ec;
   border-radius: 16px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.07);
   min-height: 180px;            /* altura mínima */
   height: 180px;                /* altura fixa opcional */
+  width: 360px;
   display: flex;
   flex-direction: column;
   gap: .6rem;
   justify-content: center;      /* centraliza verticalmente conteúdo */
+  padding-bottom: 1.5rem;
 }
 
 .msg-headline {
@@ -111,8 +114,9 @@ button:hover {
 /* badge flutuando na quina superior esquerda */
 .badge-mes {
   position: absolute;
-  top: 0px;                   /* sobe um pouquinho para “sair” da caixa */
+  top: -10px;                   /* sobe um pouquinho para “sair” da caixa */
   left: 0px;                  /* encosta na borda esquerda */
+  z-index: 2; /* ou mais alto, se necessário */
   font-size: .8rem;
   background: #ff5e78;
   color: #fff;
