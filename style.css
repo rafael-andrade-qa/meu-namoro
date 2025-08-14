@@ -160,7 +160,14 @@ button:hover {
   background: #b4004e;
 }
 
-.mensagens .swiper,
+/* Carrossel de mensagens: não mostrar slide anterior na esquerda,
+   mas permitir o badge sair por cima do card */
+.mensagens .swiper {
+  overflow-x: hidden;   /* esconde as laterais */
+  overflow-y: visible;  /* deixa o selo/badge aparecer para cima */
+}
+
 .mensagens .swiper-slide {
-  overflow: visible !important;
+  overflow: visible;    /* permite o badge "sair" do card */
+  padding-top: 12px;    /* folga pro badge não ser cortado */
 }
