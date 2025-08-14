@@ -115,8 +115,7 @@ button:hover {
 .badge-mes {
   position: absolute;
   top: -10px;                   /* sobe um pouquinho para “sair” da caixa */
-  left: 0px;                  /* encosta na borda esquerda */
-  z-index: 2; /* ou mais alto, se necessário */
+  left: -10px;                  /* encosta na borda esquerda */
   font-size: .8rem;
   background: #ff5e78;
   color: #fff;
@@ -152,4 +151,9 @@ button:hover {
 .mensagens .swiper-pagination-bullet-active {
   opacity: 1;
   background: #b4004e;
+}
+
+.mensagens .swiper,
+.mensagens .swiper-slide {
+  overflow: visible !important;
 }
