@@ -99,15 +99,15 @@ button:hover {
   position: relative;          /* badge vai usar esta caixa como referência */
   background: #ffe4ec;
   border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.07);
   min-height: 180px;            /* altura mínima */
   height: 180px;                /* altura fixa opcional */
-  width: 360px;
+  width: 300px;
   display: flex;
   flex-direction: column;
   gap: .6rem;
   justify-content: center;      /* centraliza verticalmente conteúdo */
   padding-bottom: 1.5rem;
+  padding-top: 1rem;
 }
 
 .msg-headline {
