@@ -88,30 +88,40 @@ button:hover {
 }
 
 .msg-card {
+  position: relative;          /* badge vai usar esta caixa como referência */
   background: #ffe4ec;
   border-radius: 16px;
-  padding: 1rem 1.2rem;
   box-shadow: 0 6px 18px rgba(0,0,0,0.07);
-  min-height: 160px;
+  min-height: 180px;            /* altura mínima */
+  height: 180px;                /* altura fixa opcional */
   display: flex;
   flex-direction: column;
   gap: .6rem;
+  justify-content: center;      /* centraliza verticalmente conteúdo */
 }
 
 .msg-headline {
   display: flex;
-  align-items: center;
-  gap: .6rem;
+  flex-direction: column; /* Badge em cima, título embaixo */
+  align-items: center;    /* Centraliza no eixo horizontal */
+  gap: .4rem;
+  text-align: center;     /* Garante centralização do texto */
 }
 
+/* badge flutuando na quina superior esquerda */
 .badge-mes {
+  position: absolute;
+  top: 0px;                   /* sobe um pouquinho para “sair” da caixa */
+  left: 0px;                  /* encosta na borda esquerda */
   font-size: .8rem;
   background: #ff5e78;
   color: #fff;
   border-radius: 999px;
-  padding: .2rem .6rem;
+  padding: .25rem .6rem;
   white-space: nowrap;
+  box-shadow: 0 4px 10px rgba(0,0,0,.08);
 }
+
 
 .msg-title {
   margin: 0;
