@@ -90,8 +90,71 @@ async function carregarFotosSwiper() {
   });
 }
 
+/* ========= Carrossel de mensagens ========= */
+
+const REL_START = new Date("2025-06-13T21:30:00");
+
+function mesesDesdeInicio(ref = new Date()) {
+  let m = (ref.getFullYear() - REL_START.getFullYear()) * 12 +
+          (ref.getMonth() - REL_START.getMonth());
+  if (ref.getDate() < REL_START.getDate()) m -= 1;
+  return Math.max(0, m);
+}
+
+async function carregarMensagensSwiper() {
+  const wrapper = document.getElementById("mensagens-wrapper");
+  if (!wrapper) return;
+
+  try {
+    const resp = await fetch("mensagens/mensagens.json");
+    const mensagens = await resp.json();
+
+    mensagens.forEach((msg, idx) => {
+      const slide = document.createElement("div");
+      slide.className = "swiper-slide";
+      slide.innerHTML = `
+        <article class="msg-card">
+          <header class="msg-headline">
+            <span class="badge-mes">${idx + 1}º mês</span>
+            <h3 class="msg-title">${msg.titulo}</h3>
+          </header>
+          <p class="msg-text">${msg.texto}</p>
+        </article>
+      `;
+      wrapper.appendChild(slide);
+    });
+
+    const mesAtualIndex = Math.min(
+      mensagens.length - 1,
+      mesesDesdeInicio(new Date())
+    );
+
+    new Swiper(".mensagens-swiper", {
+      slidesPerView: 1,
+      spaceBetween: 12,
+      loop: false,
+      allowTouchMove: true,
+      navigation: {
+        nextEl: ".mensagens .swiper-button-next",
+        prevEl: ".mensagens .swiper-button-prev",
+      },
+      pagination: {
+        el: ".mensagens .swiper-pagination",
+        clickable: true,
+      },
+      speed: 400,
+      initialSlide: mesAtualIndex
+    });
+
+  } catch (err) {
+    console.error("Erro ao carregar mensagens:", err);
+  }
+}
+
 window.onload = () => {
   updateTimer();
   setInterval(updateTimer, 1000);
   carregarFotosSwiper();
+  carregarMensagensSwiper(); // <— novo
 };
+
