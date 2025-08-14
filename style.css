@@ -51,6 +51,13 @@ button:hover {
   border-radius: 16px;
 }
 
+/* carrossel de fotos (o de cima) */
+.swiper-container,
+.swiper-container .swiper,
+.swiper-container .swiper-slide {
+  overflow: hidden;
+}
+
 .carousel-img {
   height: 100%;
   max-height: 220px; /* controla a altura máxima */
