@@ -101,13 +101,12 @@ button:hover {
   border-radius: 16px;
   min-height: 180px;            /* altura mínima */
   height: 180px;                /* altura fixa opcional */
-  width: 300px;
+  width: 290px;
   display: flex;
   flex-direction: column;
   gap: .6rem;
   justify-content: center;      /* centraliza verticalmente conteúdo */
-  padding-bottom: 1.5rem;
-  padding-top: 1rem;
+  padding: 1.5rem;
 }
 
 .msg-headline {
